@@ -1,59 +1,76 @@
-#include <iostream>
-
-#define ROWS 512
-#define COLS 512
-#define PI 3.14159265
-
-using namespace std;
-
-int occurs_count[64][10000];
-double adct[ROWS][COLS];
-
-
-void dct_trans()
-{
-	FILE *infd;
-	unsigned char input[ROWS][COLS];
-	int inblock[8][8];
-	double c[8] = { 0.707,1.0,1.0,1.0,1.0,1.0,1.0,1.0 };
-	/* input the original pgm image to input[][] */
-	infd = fopen("lena512.raw", "rb");
-	fread(input, sizeof(unsigned char), ROWS*COLS, infd);
-	fclose(infd);
-
-	/* the ROWSxCOLS image is processed by ROWS/8xCOLS/8 block lines and columns */
-	for (int i = 0; i < ROWS / 8; i++)
-	{
-		for (int j = 0; j < COLS / 8; j++)
-		{/*for each image block, go through following step */
-
-		 /* change the format of unsigned char to integer before computation*/
-			for (int u = 0; u < 8; u++)
-				for (int v = 0; v < 8; v++)
-					inblock[u][v] = (int)input[i * 8 + u][j * 8 + v];
-
-			/* remove the mean of pixels in the image block*/
-			for (int u = 0; u < 8; u++)
-				for (int v = 0; v < 8; v++)
-					inblock[u][v] = inblock[u][v] - 128;//£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡
-
-			/* Forward DCT of one block */
-			double temp = 0.0;
-			for (int u = 0; u < 8; u++)
-				for (int v = 0; v < 8; v++)
-				{
-					temp = 0.0;
-					for (int x = 0; x < 8; x++)
-						for (int y = 0; y < 8; y++)
-							temp += (double)inblock[x][y] * cos((2 * x + 1)*u*PI/ 16)*cos((2 * y + 1)*v*PI / 16);
-					adct[i * 8 + u][j * 8 + v] = temp*c[u] * c[v] / 4;
-				}
-		}
-	}
-}
+#include "fun.h"
 
 int main()
 {
-	dct_trans();
+	int target_rate;
+
+	dctTrans();
+	getherStats();
+	fillR();
+	fillD();
+
+	for (int i = 0; i < 64; i++)
+	{
+		least_D[i] = new double[max_rate * 64];
+		choice[i] = new int[max_rate * 64];
+		for (int j = 0; j < max_rate * 64; j++)
+		{
+			choice[i][j] = 150;
+		}
+	}
+	for (int n = 0; n < 64; n++)//³õÊ¼»¯least_D
+	{
+		for (int s = 0; s <= max_rate; s++)
+		{
+			least_D[n][s] = INFINITY;
+		}
+	}
+
+	for (int q = 1; q < QMAX; q++)
+	{
+		if (D[0][q] < least_D[0][R[0][q]])
+		{
+			least_D[0][R[0][q]] = D[0][q];
+			choice[0][R[0][q]] = q;
+		}
+	}
+	for (int n = 1; n < 64; n++)
+	{
+		for (int q = 1; q < QMAX; q++)
+		{
+			for (int s = 0; s <= max_rate; s++)
+			{
+				if (D[n][q] + least_D[n - 1][s] < least_D[n][s + R[n][q]])
+				{
+					least_D[n][s + R[n][q]] = D[n][q] + least_D[n - 1][s];
+					choice[n][s + R[n][q]] = q;
+				}
+			}
+		}
+	}
+
+	for (int i = 0; i < 64; i++)
+	{
+		for (int j = 1; j < 64 * max_rate; j++)
+		{
+			if (choice[i][j] > choice[i][j - 1])
+				choice[i][j] = choice[i][j - 1];
+			//  cout << choice[i][j] << " ";
+		}
+		//  cout << endl;
+	}
+
+	target_rate = 110;
+	for (int n = 63; n >= 0; n--)
+	{
+		cout << choice[n][target_rate] << "  ";
+		target_rate -= R[n][choice[n][target_rate]];
+	}
+
+	for (int i = 0; i < 64; i++)
+	{
+		delete[] least_D[i];
+		delete[] choice[i];
+	}
 	return 0;
 }

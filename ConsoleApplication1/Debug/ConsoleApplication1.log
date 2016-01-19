@@ -1,2 +1,8 @@
 ﻿  源.cpp
-  ConsoleApplication1.vcxproj -> E:\初始化量化矩阵\ConsoleApplication1\Debug\ConsoleApplication1.exe
+f:\云盘同步文件夹\实验室同步\初始化量化矩阵\consoleapplication1\consoleapplication1\fun.h(13): warning C4005: “INFINITY”: 宏重定义
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\math.h(78): note: 参见“INFINITY”的前一个定义
+f:\云盘同步文件夹\实验室同步\初始化量化矩阵\consoleapplication1\consoleapplication1\fun.h(72): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+f:\云盘同步文件夹\实验室同步\初始化量化矩阵\consoleapplication1\consoleapplication1\fun.h(74): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+f:\云盘同步文件夹\实验室同步\初始化量化矩阵\consoleapplication1\consoleapplication1\fun.h(92): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+f:\云盘同步文件夹\实验室同步\初始化量化矩阵\consoleapplication1\consoleapplication1\fun.h(94): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+  ConsoleApplication1.vcxproj -> F:\云盘同步文件夹\实验室同步\初始化量化矩阵\ConsoleApplication1\Debug\ConsoleApplication1.exe

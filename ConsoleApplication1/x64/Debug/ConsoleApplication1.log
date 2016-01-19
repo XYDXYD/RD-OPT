@@ -1,0 +1,21 @@
+﻿生成启动时间为 2016/1/20 20:06:57。
+     1>项目“D:\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /sdl /Od /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt "源.cpp"
+         源.cpp
+     1>d:\consoleapplication1\consoleapplication1\fun.h(13): warning C4005: “INFINITY”: 宏重定义
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\math.h(102) : 参见“INFINITY”的前一个定义
+     1>d:\consoleapplication1\consoleapplication1\fun.h(72): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+     1>d:\consoleapplication1\consoleapplication1\fun.h(74): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+     1>d:\consoleapplication1\consoleapplication1\fun.h(92): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+     1>d:\consoleapplication1\consoleapplication1\fun.h(94): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+     1>源.cpp(72): warning C4154: 删除数组表达式；转换到提供的指针
+     1>源.cpp(73): warning C4154: 删除数组表达式；转换到提供的指针
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\ConsoleApplication1\x64\Debug\ConsoleApplication1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\ConsoleApplication1\x64\Debug\ConsoleApplication1.lib" /MACHINE:X64 "x64\Debug\源.obj"
+         ConsoleApplication1.vcxproj -> D:\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe
+     1>已完成生成项目“D:\ConsoleApplication1\ConsoleApplication1\ConsoleApplication1.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.89
